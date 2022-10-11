@@ -48,6 +48,9 @@ public class JobTest {
     }
 
     @Test
-
-
+    public void testToStringStartsAndEndsWithNewLine() {
+        Job testJob1 = new Job("Technician", new Employer("Bayer"), new Location("Chesterfield"), new PositionType("R&D"), new CoreCompetency("PCR"));
+        assertEquals('\n', testJob1.toString().charAt(0));
+        assertEquals('\n', testJob1.toString().charAt(testJob1.toString().length() - 1));
+    }
 }
