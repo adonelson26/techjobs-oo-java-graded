@@ -8,26 +8,39 @@ public abstract class JobField {
     public String value;
 
     public JobField() {
-        this.id = nextId;
+        id = nextId;
         nextId++;
     }
 
     public JobField(String value) {
+        this();
         this.value = value;
     }
 
+    // TODO: Add a custom toString() method that returns the data stored in 'value'.
     @Override
-    public abstract boolean equals(Object o);
+    public String toString() {
+        return value;
+    }
+
+
+    // TODO: Add custom equals and hashCode methods. Consider two PositionType objects "equal" when
+    //  their id fields match.
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof JobField)) return false;
+        JobField jobField = (JobField) o;
+        return getId() == jobField.getId();
+    }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(getId());
     }
 
-    @Override
-    public String toString() {
-        return this.value;
-    }
+    // Getters and Setters:
 
     public int getId() {
         return id;
